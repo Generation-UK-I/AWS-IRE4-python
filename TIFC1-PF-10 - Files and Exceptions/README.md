@@ -108,50 +108,6 @@ Here we've put the name of the file into a variable, then we `open()` the file i
 
 ***Note:*** *If the file exists any content will be overwritten; If it doesn't exist it will be created.*
 
-## Exceptions
-
-Exceptions are errors from which your code cannot recover.  
-
-You have probably seen a lot of these in the past, and a couple were mentioned in our earliest Python sessions.  
-
-### Types of Exceptions
-
-- **TypeError:** Raised when an operation or function is applied to an object of inappropriate type.
-- **FileNotFoundError:** Raised when a file or directory is requested but cannot be found.
-- **ZeroDivisionError:** Raised when division or modulo operation is performed with zero as the divisor.
-- **SyntaxError:** Raised when the Python parser encounters a syntax error, such as incorrect indentation or invalid syntax.
-- **IndentationError:** Raised when there is incorrect indentation in the code.
-
-These are just a few, there are many more.
-
-### Handling Exceptions with try-except blocks  
-
-Exceptions are handled with `try-except` blocks which asks Python to do something, but also tell Python what to do if an exception is encountered.
-
-When you use try-except blocks your programs will continue running, even if things start to go wrong. 
-
-Additonally, instead of traceback messages which can be confusing for users to read, you can create user-friendly error messages that explain clearly what happened.
-
-### Using try-except blocks
-
-When you think an error may occur, you can write a try-except block to handle the exception that might be raised. 
-
-```py
-try
-    print(5/0)
-except ZeroDivisionError:
-    print("You cannot divide by zero!")
-```
-
-You tell Python to try running some code, and you tell it what to do if the code results in a particular kind of exception.
-
-#### Tips when handling exceptions
-
-- Be specific in exception handling
-- Print meaningful error messages
-- Keep exception handling simple
-- Test exception handling
-
 ## Storing Data
 
 Sometimes you may want to ask users to input certain kinds of information, then you may want to store this information in data structures like lists and dictionaries.  
@@ -245,6 +201,79 @@ with open(filename, 'w') as obj:
     json.dump(cat, obj)
     print(f"Welcome {cat}, I will remember you on your next visit!")
 ```
+
+
+## Try-except Blocks
+
+In Python, errors that occur during the execution of a program are called exceptions. A program will crash if an exception is not handled properly. This is where try-except blocks come in. They allow you to "try" a section of code and "except" (or catch) any errors that might occur, so your program can continue running smoothly.
+
+### The Basic Concept: Try and Except
+The fundamental idea is to wrap the code that might cause an error inside a try block. If an exception happens, Python immediately stops executing the code in the try block and jumps to the except block.
+
+```python
+try:
+    # Code that might cause an error
+    print(10 / 0) # This will cause a ZeroDivisionError
+except:
+    # Code to run if an error occurs in the 'try' block
+    print("An error occurred!")
+```
+
+In the example above, the except block will catch the ZeroDivisionError and print a friendly message instead of crashing the program.
+
+### Handling Specific Exceptions
+It's a good practice to specify which type of exception you are expecting to handle. This makes your code more robust and prevents you from accidentally catching errors you didn't intend to.
+
+Here are a couple of common specific exceptions:
+
+- **ValueError:** Occurs when a function receives an argument of the correct type but an inappropriate value (e.g., trying to convert a non-numeric string to an integer).
+- **TypeError:** Raised when an operation or function is applied to an object of inappropriate type.
+- **FileNotFoundError:** Raised when a file or directory is requested but cannot be found.
+- **ZeroDivisionError:** Raised when division or modulo operation is performed with zero as the divisor.
+- **SyntaxError:** Raised when the Python parser encounters a syntax error, such as incorrect indentation or invalid syntax.
+- **IndentationError:** Raised when there is incorrect indentation in the code.
+
+Example: Catching Specific Errors
+```python
+try:
+    num = int("hello") # This will cause a ValueError
+except ValueError:
+    print("Hey, you can't convert that to a number!")
+
+try:
+    result = 10 / 0 # This will cause a ZeroDivisionError
+except ZeroDivisionError:
+    print("Oops, you can't divide by zero!")
+```
+
+### The else and finally Blocks
+For more advanced error handling, you can add an else and/or a finally block.
+
+The else block is optional and runs only if the code in the try block finishes without any exceptions.
+
+The finally block is also optional and always runs, no matter what. It's perfect for cleanup tasks, like closing a file or a database connection, whether an error occurred or not.
+
+Full Syntax:
+
+```python
+try:
+    # Code that might cause an error
+except SpecificError:
+    # Code to handle that specific error
+except AnotherError:
+    # Code to handle a different error
+else:
+    # Code to run if no errors occurred
+finally:
+    # Code that always runs
+```
+
+#### Tips when handling exceptions
+
+- Be specific in exception handling
+- Print meaningful error messages
+- Keep exception handling simple
+- Test exception handling
 
 ## Practice
 

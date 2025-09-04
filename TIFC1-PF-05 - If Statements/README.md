@@ -1,5 +1,4 @@
 # If Statements
----
 
 ## Learning Objectives: 
 - What is an `if` statement and how are they used?

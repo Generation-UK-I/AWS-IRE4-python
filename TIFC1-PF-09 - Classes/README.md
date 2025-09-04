@@ -1,4 +1,4 @@
-# Files and Exceptions
+# Classes
 
 ## Learning Objectives
 
