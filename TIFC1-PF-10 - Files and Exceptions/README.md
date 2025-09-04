@@ -278,3 +278,5 @@ finally:
 ## Practice
 
 Now practice implementing the skills demonstrating here by completing the associated exercises.
+
+[Click here for exercises](FilesAndExceptions.md)
